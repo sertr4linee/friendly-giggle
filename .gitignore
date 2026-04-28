@@ -1,0 +1,20 @@
+# Local analysis state (rebuilt on first /analyze run)
+.claude/db/*.db
+.claude/db/*.db-journal
+.claude/db/*.db-wal
+.claude/db/*.db-shm
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
