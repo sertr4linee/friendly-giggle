@@ -10,7 +10,7 @@ import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 
-from .scanner import FileScan, scan_file
+from scanner import FileScan, scan_file
 
 
 @dataclass
