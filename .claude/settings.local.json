@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -f .claude/db/analysis.db)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}
