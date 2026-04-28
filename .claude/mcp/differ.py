@@ -40,7 +40,7 @@ def has_any_commit(repo: Path) -> bool:
 
 
 def changed_files_diff(repo: Path, base_ref: str) -> list[str]:
-    code, out, err = _git(["diff", "--name-only", f"{base_ref}...HEAD"], repo)
+    code, out, _ = _git(["diff", "--name-only", f"{base_ref}...HEAD"], repo)
     if code != 0:
         return []
     return [f for f in out.splitlines() if f.endswith(".py")]
