@@ -1,0 +1,40 @@
+# Deterministic merge-verdict scoring.
+# VERDICT agent applies these rules in Python — no LLM judgment.
+
+score_weights:
+  critical: -50
+  error:    -10
+  warn:     -2
+  info:      0
+
+# Decision is the first matching threshold (descending by required score).
+thresholds:
+  - decision: block
+    when_score_at_or_below: -30
+  - decision: warn
+    when_score_at_or_below: -5
+  - decision: approve
+    when_score_at_or_below: 999999
+
+# Hard rules: any single matching finding forces a decision regardless of score.
+hard_rules:
+  - if_severity: critical
+    if_category: security
+    decision: block
+  - if_category: security.secret_leaked
+    decision: block
+
+# Per-agent quality thresholds (referenced by individual agents).
+agent_thresholds:
+  perf:
+    cyclomatic_warn: 10
+    cyclomatic_error: 20
+    nested_loop_depth_warn: 3
+  quality:
+    loc_warn: 50
+    loc_error: 150
+    cyclomatic_warn: 10
+    cyclomatic_error: 20
+  tests:
+    require_for_kinds: [func, method]
+    skip_if_private: true
